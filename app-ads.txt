@@ -1,2 +1,1 @@
-# AdMob のアカウントができたら、下の pub- の番号を本物にして、行頭の # を外す
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-1167530809615182, DIRECT, f08c47fec0942fa0
