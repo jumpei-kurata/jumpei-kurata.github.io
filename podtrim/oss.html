@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>オープンソースの部品 — Podtrim</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <p class="nav"><a href="./">戻る</a> · <a href="#en">English</a></p>
+    <h1>オープンソースの部品と元のコード</h1>
+
+    <p>Podtrim 1.0.0 には、LGPL（GNU Lesser General Public License）の部品が入っています。部品ごとの元のコードの置き場を、下に書きます。</p>
+    <p>This software uses code of <a href="https://ffmpeg.org">FFmpeg</a> licensed under the <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">LGPLv2.1</a> and its source can be downloaded <a href="https://github.com/jumpei-kurata/jumpei-kurata.github.io/releases/tag/podtrim-lgpl-1">here</a>.</p>
+
+    <h2>元のコードの置き場</h2>
+    <div class="card">
+      <p>GitHub の Release <a href="https://github.com/jumpei-kurata/jumpei-kurata.github.io/releases/tag/podtrim-lgpl-1">podtrim-lgpl-1</a> に、アプリの ffmpeg の元のコードと組み方、Chromium の FFmpeg と libusb の元のコードを、指紋の一覧 SHA256SUMS と一緒に置いています。アプリの ffmpeg の分は、アプリの中の Podtrim.app/Contents/Resources/licenses/source にも入っています。</p>
+    </div>
+
+    <h2>アプリの中の ffmpeg・ffprobe</h2>
+    <p>Podtrim.app/Contents/Resources/bin にあります。下の3つの元のコードに手を加えず、build-ffmpeg.sh で静的に組んだ物です。組み直し方は BUILD.txt にあります。</p>
+    <ul>
+      <li>FFmpeg 9.0.2（LGPL 2.1 以降）<br>公式: <a href="https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz">https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz</a><br>SHA-256: <code>8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e</code></li>
+      <li>LAME 4.0（LGPL 2 以降）<br>公式: <a href="https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz">https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz</a><br>SHA-256: <code>3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb</code></li>
+      <li>mpg123 1.33.7（LGPL 2.1）<br>公式: <a href="https://www.mpg123.de/download/mpg123-1.33.7.tar.bz2">https://www.mpg123.de/download/mpg123-1.33.7.tar.bz2</a><br>SHA-256: <code>31d0e35a4ca567ec9b5ebda6c3062bb4435d6d3eacd6ef0d95cadd7854dc03ee</code></li>
+    </ul>
+    <p>FFmpeg の組み立ての設定:</p>
+    <pre>--disable-autodetect
+--disable-doc
+--disable-ffplay
+--disable-network
+--disable-shared
+--enable-static
+--enable-libmp3lame
+--enable-audiotoolbox
+--extra-cflags='-I../../deps/include -mmacosx-version-min=13.0'
+--extra-ldflags='-L../../deps/lib -mmacosx-version-min=13.0'
+--extra-libs=-lmpg123</pre>
+
+    <h2>Electron の中の部品</h2>
+    <p>Podtrim.app/Contents/Frameworks は、Electron 44.9.3（Chromium 152.0.7977.167）の公式の配布物で、手を加えていません。LGPL の部品は次の3つです。</p>
+    <ul>
+      <li>FFmpeg（Chromium の物・libffmpeg.dylib）<br>公式: <a href="https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/2b68d2babae73714846961fb0ee47e3b3d2e39a9">chromium/third_party/ffmpeg の 2b68d2babae73714846961fb0ee47e3b3d2e39a9</a> と、Electron の直し <a href="https://github.com/electron/electron/blob/v44.9.3/patches/ffmpeg/link_with_loader_path.patch">link_with_loader_path.patch</a><br>Release の写しの SHA-256: <code>02a96e7b62280c5c004a64fcb02e75d0726f6c512930cae6e14cb422fc32f6e2</code></li>
+      <li>libusb 1.0.17（Electron Framework の中）<br>公式: <a href="https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.167/third_party/libusb">Chromium 152.0.7977.167 の third_party/libusb</a><br>Release の写しの SHA-256: <code>487456bd30ea05c096a16d4b73c84ba9521c6b9b07a6b8c396ac2beb9b1518a4</code></li>
+      <li>WebKit から来た部分（Electron Framework の中）<br>公式: <a href="https://github.com/electron/electron/tree/v44.9.3">Electron v44.9.3</a> と <a href="https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.167">Chromium 152.0.7977.167</a></li>
+    </ul>
+    <p>WebKit の部分は大きいので、Release には置いていません。上の公式の置き場から落とせます。</p>
+
+    <h2>MPL 2.0 の部品</h2>
+    <ul>
+      <li>symphonia ほか（Electron Framework の中）<br>公式: <a href="https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.167/third_party/rust/chromium_crates_io/vendor">Chromium 152.0.7977.167 の third_party/rust</a></li>
+      <li>Eigen（ONNX Runtime 1.31.1 の中）<br>公式: <a href="https://github.com/eigen-mirror/eigen/tree/1d8b82b0740839c0de7f1242a3585e3390ff5f33">eigen-mirror の 1d8b82b0740839c0de7f1242a3585e3390ff5f33</a></li>
+    </ul>
+
+    <h2>写しが要る時</h2>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeKt8kMfRUFj1Lt2yUYSc0Fp2x49Qo1HZOCc7YqnYhXCltG_Q/viewform">ご意見フォーム</a>からお知らせください。この版を最後に配った日から3年の間、このページの部品の元のコードの写しをお渡しします。</p>
+
+    <h2 id="en">Open source components</h2>
+    <p>Podtrim 1.0.0 includes components licensed under the GNU Lesser General Public License (LGPL).</p>
+    <ul>
+      <li>Podtrim.app/Contents/Resources/bin/ffmpeg and ffprobe: FFmpeg 9.0.2 (LGPL 2.1 or later), statically linked with LAME 4.0 (LGPL 2 or later) and mpg123 1.33.7 (LGPL 2.1), all unmodified. Their source code, build-ffmpeg.sh and BUILD.txt are in the GitHub release <a href="https://github.com/jumpei-kurata/jumpei-kurata.github.io/releases/tag/podtrim-lgpl-1">podtrim-lgpl-1</a> and in Podtrim.app/Contents/Resources/licenses/source.</li>
+      <li>Podtrim.app/Contents/Frameworks: the unmodified official build of Electron 44.9.3 (Chromium 152.0.7977.167). Its LGPL parts are Chromium's FFmpeg in libffmpeg.dylib and libusb 1.0.17, whose source is in the release, and the WebKit-derived code in Electron Framework, whose source is in Electron v44.9.3 and Chromium 152.0.7977.167.</li>
+      <li>MPL 2.0 parts: symphonia and others in Electron Framework, whose source is in Chromium 152.0.7977.167, and Eigen in ONNX Runtime 1.31.1, whose source is in eigen-mirror 1d8b82b0740839c0de7f1242a3585e3390ff5f33.</li>
+    </ul>
+    <p>To request a copy of the source code, use the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKt8kMfRUFj1Lt2yUYSc0Fp2x49Qo1HZOCc7YqnYhXCltG_Q/viewform">feedback form</a>. This offer is valid for three years after we last distribute this version.</p>
+  </main>
+</body>
+</html>
