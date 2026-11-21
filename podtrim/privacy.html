@@ -10,7 +10,7 @@
   <main>
     <p class="nav"><a href="./">Back</a> · <a href="privacy-ja.html">日本語</a></p>
     <h1>Privacy Policy</h1>
-    <p>Last updated: November 11, 2026</p>
+    <p>Last updated: November 21, 2026</p>
     <p>This page explains how Podtrim, a podcast editing app for Mac, handles information. Recording, transcription and editing happen on your Mac. Podtrim sends nothing to the developer's servers.</p>
 
     <h2>Recordings, transcripts and edits</h2>
@@ -20,7 +20,7 @@
     <p>The microphone is used only while you record on the recording screen. You can turn off access at any time in System Settings → Privacy &amp; Security → Microphone.</p>
 
     <h2>AI for show notes (only if you choose it)</h2>
-    <p>AI is off by default. Only if you choose an AI provider (Google Gemini, Anthropic Claude or OpenAI) in the AI settings, enter your own API key, and agree to what will be sent, Podtrim sends the following directly from your Mac to that provider when you press “作る” (Create). When you press “保存” (Save), or press “作る” (Create) before agreeing, Podtrim first shows a window with what will be sent and to whom:</p>
+    <p>AI is off by default. Only if you choose an AI provider (Google Gemini, Anthropic Claude or OpenAI) in the AI settings, enter your own API key, and agree to what will be sent, Podtrim sends the following directly from your Mac to that provider when you click “Create”. When you click “Save”, or click “Create” before agreeing, Podtrim first shows a window with what will be sent and to whom:</p>
     <ul>
       <li>the transcript text (which may include the words and names of the people you talked with)</li>
       <li>the show name, the episode name, your title preferences, today’s date and the next episode number</li>
@@ -31,21 +31,22 @@
       <li>Anthropic (Claude): <a href="https://www.anthropic.com/legal/commercial-terms">https://www.anthropic.com/legal/commercial-terms</a>. Anthropic states that it does not, by default, use content sent through its API to train its models (per its terms; this may change).</li>
       <li>OpenAI: <a href="https://developers.openai.com/api/docs/guides/your-data">https://developers.openai.com/api/docs/guides/your-data</a>. OpenAI states that it does not, by default, use content sent through its API to train its models (per its terms; this may change).</li>
     </ul>
-    <p>If other people took part in an episode, please let them know before sending it to an AI. If you do not agree, choose “使わない” (Off) in the AI settings, and Podtrim still creates the transcript and a prompt you can copy, on your Mac. You can withdraw your consent at any time by choosing “使わない” (Off) in the AI settings and pressing “保存” (Save), or by deleting your key.</p>
+    <p>If other people took part in an episode, please let them know before sending it to an AI. If you do not agree, choose “Off” in AI Settings, and Podtrim still creates the transcript and a prompt you can copy, on your Mac. You can withdraw your consent at any time by choosing “Off” in AI Settings and clicking “Save”, or by deleting your key.</p>
     <p>Your API key is stored encrypted on your Mac and is never sent to the developer.</p>
 
     <h2>Other network access</h2>
     <ul>
       <li>Transcription model: the first time you transcribe, Podtrim downloads the model (about 0.9 GB) once from Hugging Face (huggingface.co and its content delivery network). No recordings or text are sent.</li>
+      <li>English filler model: the first time you search for fillers in an English episode, Podtrim downloads the model (about 0.95 GB) once from GitHub (github.com and its content delivery network). No recordings or text are sent.</li>
       <li>Show RSS feed: only if you enter an RSS URL in the show settings, Podtrim reads that feed to count the next episode number. Feeds whose URL starts with http are read without encryption.</li>
       <li>The app’s screen and its internal service talk to each other only inside your Mac (127.0.0.1). This does not connect to the internet or other devices.</li>
     </ul>
 
     <h2>What is stored on your Mac, and how to delete it</h2>
     <ul>
-      <li>Episodes (cuts, waveforms, transcripts, show-note drafts and so on): “回を消す…” (Delete episodes) moves them to the Trash.</li>
-      <li>Settings and API keys: the key can be deleted with “選んでいる AI の鍵を消す” (Delete the selected AI’s key) in the AI settings. This also withdraws your consent for that provider.</li>
-      <li>The transcription model and the app log are kept in the app’s own storage.</li>
+      <li>Episodes (cuts, waveforms, transcripts, show-note drafts and so on): “Delete Episodes…” moves them to the Trash.</li>
+      <li>Settings and API keys: the key can be deleted with “Delete Selected AI's Key” in AI Settings. This also withdraws your consent for that provider.</li>
+      <li>The transcription model, the English filler model and the app log are kept in the app’s own storage.</li>
     </ul>
     <p>After you delete Podtrim, its data container (in your home folder → Library → Containers) may remain. To remove everything, move it to the Trash as well.</p>
 
