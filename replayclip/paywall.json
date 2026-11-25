@@ -1,0 +1,4 @@
+{
+  "plans": ["annual", "monthly", "lifetime"],
+  "preselected": "annual"
+}
